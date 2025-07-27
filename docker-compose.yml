@@ -95,11 +95,6 @@ services:
       timeout: 5s
       retries: 5
 
-volumes:
-  db1-data:
-  db2-data:
-  minio_data:
-
   frontend:
     build:
       context: ./frontend
@@ -116,6 +111,11 @@ volumes:
     depends_on:
       - auth-service
       - notes-service
+
+volumes:
+  db1-data:
+  db2-data:
+  minio_data:
 
 networks:
   app-network:
