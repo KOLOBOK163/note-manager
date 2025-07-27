@@ -100,6 +100,23 @@ volumes:
   db2-data:
   minio_data:
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_AUTH_API_URL=http://localhost:8082/api
+      - REACT_APP_NOTES_API_URL=http://localhost:8081/api
+    networks:
+      - app-network
+    depends_on:
+      - auth-service
+      - notes-service
+
 networks:
   app-network:
     driver: bridge
