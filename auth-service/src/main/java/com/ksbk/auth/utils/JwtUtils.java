@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.Map;
 
 @Component
 public class JwtUtils {
@@ -49,17 +48,6 @@ public class JwtUtils {
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtAccessExpirationMs))
                 .claim("roles", userPrincipal.getAuthorities())
-                .signWith(accessTokenKey())
-                .compact();
-    }
-
-    public String generateAccessToken(String subject, Map<String, Object> claims)
-    {
-        return Jwts.builder()
-                .subject(subject)
-                .claims(claims)
-                .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + jwtAccessExpirationMs))
                 .signWith(accessTokenKey())
                 .compact();
     }
@@ -139,6 +127,7 @@ public class JwtUtils {
         }
         return false;
     }
+
 
     public long getRefreshExpiration() {
         return jwtRefreshExpirationMs;

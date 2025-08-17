@@ -34,7 +34,6 @@
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
 		<springdoc.version>2.5.0</springdoc.version>
 		<minio.version>8.5.17</minio.version>
-		<liquibase.version>4.33.0</liquibase.version>
 	</properties>
 
 	<dependencyManagement>
@@ -106,11 +105,6 @@
 				<artifactId>minio</artifactId>
 				<version>${minio.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-core</artifactId>
-				<version>${liquibase.version}</version>
-			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -154,11 +148,6 @@
 							</exclude>
 						</excludes>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.liquibase</groupId>
-					<artifactId>liquibase-maven-plugin</artifactId>
-					<version>${liquibase.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
